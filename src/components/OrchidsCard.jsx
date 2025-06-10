@@ -2,7 +2,7 @@
   import React from 'react';
   import '../styles/Card.css'; // CSS sẽ được cập nhật bên dưới
   
-  export default function OrchidsCard({ orchid }) {
+  export default function OrchidsCard({ orchid,  onDetail}) {
     return (
       <div className="card">
         <div
@@ -26,7 +26,7 @@
           </p>
           
           <div className="card-buttons">
-            <button className="btn-secondary">Details</button>
+            <button className="btn-secondary" onClick={onDetail}>Details</button>
             <button className="btn-primary">Like</button>
           </div>
         </div>
