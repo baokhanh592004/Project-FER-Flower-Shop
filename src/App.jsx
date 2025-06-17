@@ -1,29 +1,23 @@
-import React, { useContext } from 'react';
-import Orchids from './pages/Orchids';
-import Footer from './components/Footer';
-import Header from './components/Navbar';
-import { ThemeProvider, ThemeContext } from './context/ThemeContext';
-import MyButton from './components/MyButton';
+// src/App.js
+// Cấu trúc này đảm bảo context được cung cấp cho toàn bộ ứng dụng.
 
-function AppContent() {
-  const { theme } = useContext(ThemeContext);
+import { ThemeProvider } from './context/ThemeContext'; // Import ThemeProvider
+import AppRoutes from './routers/AppRoutes'; // Import AppRoutes
+import React from 'react';
 
+import { BrowserRouter } from 'react-router-dom';
+
+function App() {
   return (
-    <div className={`${theme} min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>
-      <Header />
-      <div className="p-4">
-        <MyButton />
-        <Orchids />
-      </div>
-      <Footer />
-    </div>
+    // 1. BrowserRouter bao bọc tất cả để routing hoạt động.
+    <BrowserRouter>
+      {/* 2. ThemeProvider bao bọc AppRoutes. Đây là mấu chốt! */}
+      {/* Mọi component bên trong AppRoutes sẽ là "con cháu" của ThemeProvider. */}
+      <ThemeProvider>
+        <AppRoutes />
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 
-export default function App() {
-  return (
-    <ThemeProvider>
-      <AppContent />
-    </ThemeProvider>
-  );
-}
+export default App;
