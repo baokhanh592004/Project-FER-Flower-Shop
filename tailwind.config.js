@@ -1,9 +1,16 @@
 // tailwind.config.js
-module.exports = {
-  darkMode: 'class', // Sử dụng class để kích hoạt dark mode
+
+/** @type {import('tailwindcss').Config} */
+export default {
+  // 1. DÒNG QUAN TRỌNG NHẤT: Báo cho Tailwind sử dụng chiến lược class cho dark mode.
+  darkMode: 'class', 
+
+  // 2. Đảm bảo Tailwind quét tất cả các file có thể chứa class
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // hoặc đường dẫn project của bạn
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}", // Quét tất cả các file .js, .ts, .jsx, .tsx trong thư mục src
   ],
+  
   theme: {
     extend: {},
   },

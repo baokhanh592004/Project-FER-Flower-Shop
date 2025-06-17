@@ -5,7 +5,6 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import MyButton from '../components/MyButton';
 
 export default function Layouts() {
   return (
@@ -14,10 +13,7 @@ export default function Layouts() {
       <Header />
 
       <main className="container mx-auto p-4 flex-grow">
-        <div className="my-4 flex justify-center">
-          {/* MyButton được đặt ở đây, là con của Layouts, cháu của AppRoutes, chắt của ThemeProvider */}
-          <MyButton />
-        </div>
+        
 
         <Outlet />
       </main>
