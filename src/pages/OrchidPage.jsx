@@ -8,7 +8,6 @@ import Orchids from './Orchids';
 export default function OrchidPage() {
   return (
     <>
-    
       <Orchids />
     </>
   );

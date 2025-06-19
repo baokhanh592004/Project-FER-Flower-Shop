@@ -1,15 +1,20 @@
 // src/components/Header.js
 // PHIÊN BẢN ĐÃ SỬA LỖI: Xóa bỏ hoàn toàn useContext và các style cố định.
 
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { FaFacebookF, FaTwitter, FaInstagram, FaEnvelope, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { ThemeContext } from '../context/ThemeContext';
 
 // Component này không cần dùng useContext nữa!
 export default function Header() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  
   return (
     <header>
+
       {/* ===== Thanh trên cùng (Thông tin liên hệ) ===== */}
       <div className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-1 text-sm border-b border-gray-200 dark:border-gray-700">
         <Container className="d-flex justify-content-between align-items-center">
@@ -20,7 +25,7 @@ export default function Header() {
             <FaEnvelope className="me-1 text-secondary" />
             <span>contact@flowergarden.vn</span>
           </div>
-          <div>
+          <div  className="flex">
             <a href="#" className="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 me-3 fs-5" aria-label="Facebook">
               <FaFacebookF />
             </a>
@@ -43,7 +48,7 @@ export default function Header() {
               alt="logo"
               width="60"
               className="me-3 rounded-circle border border-danger"
-            />
+              />
             <span className="font-['cursive'] text-pink-600 dark:text-pink-400">
               Flower Garden
             </span>
@@ -63,6 +68,13 @@ export default function Header() {
               <Nav.Link href="/login" className="text-white fw-bold px-3 rounded-pill bg-pink-500 hover:bg-pink-600 transition-colors">
                 Đăng nhập
               </Nav.Link>
+              <Nav.Link
+              as="button"
+              onClick={toggleTheme}
+              className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 border border-gray-300 dark:border-gray-500 rounded px-2"
+            >
+              {theme === 'dark' ? '☀️ Sáng' : '🌙 Tối'}
+            </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

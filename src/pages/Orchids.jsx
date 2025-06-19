@@ -27,7 +27,7 @@ export default function Orchids() {
 
   return (
     <div className="hero-section">
-      <div className="card-container">
+      <div className="card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
         {orchidsData.map((orchid) => (
           <div key={orchid.id}>
             {/* CẬP NHẬT Orchid ĐỂ MỞ MODAL */}
