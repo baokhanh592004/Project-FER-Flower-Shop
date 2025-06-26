@@ -1,16 +1,16 @@
 // src/components/Header.js
-// PHIÊN BẢN ĐÃ SỬA LỖI: Xóa bỏ hoàn toàn useContext và các style cố định.
+// PHIÊN BẢN HOÀN CHỈNH
 
 import React, { useContext } from "react";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import { FaFacebookF, FaTwitter, FaInstagram, FaEnvelope, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ThemeContext } from '../context/ThemeContext';
+// Sửa lại đường dẫn import sau khi di chuyển file ThemeToggle.jsx
+import ThemeToggle from '../context/ThemeToggle'; // Đảm bảo đường dẫn đúng
 
-// Component này không cần dùng useContext nữa!
 export default function Header() {
   const { theme, toggleTheme } = useContext(ThemeContext);
-
   
   return (
     <header>
@@ -55,7 +55,7 @@ export default function Header() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="main-navbar-nav" />
           <Navbar.Collapse id="main-navbar-nav">
-            <Nav className="ms-auto fw-medium" style={{ gap: "1.5rem" }}>
+            <Nav className="ms-auto fw-medium d-flex align-items-center" style={{ gap: "1.5rem" }}>
               <Nav.Link as={Link} to="/" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300">
                 Trang chủ
               </Nav.Link>
@@ -68,13 +68,9 @@ export default function Header() {
               <Nav.Link href="/login" className="text-white fw-bold px-3 rounded-pill bg-pink-500 hover:bg-pink-600 transition-colors">
                 Đăng nhập
               </Nav.Link>
-              <Nav.Link
-              as="button"
-              onClick={toggleTheme}
-              className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 border border-gray-300 dark:border-gray-500 rounded px-2"
-            >
-              {theme === 'dark' ? '☀️ Sáng' : '🌙 Tối'}
-            </Nav.Link>
+              
+              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+
             </Nav>
           </Navbar.Collapse>
         </Container>
