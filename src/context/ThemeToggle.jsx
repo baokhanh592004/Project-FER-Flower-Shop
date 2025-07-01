@@ -12,4 +12,4 @@ function ThemeToggle({ theme, toggleTheme }) {
   );
 }
 
-export default ThemeToggle; // <-- THÊM DÒNG NÀY
+export default ThemeToggle;

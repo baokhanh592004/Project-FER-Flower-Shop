@@ -1,10 +1,11 @@
 // tailwind.config.js
 
 /** @type {import('tailwindcss').Config} */
-module.exports = {
-  darkMode: 'class', // ⚠️ Cái này là BẮT BUỘC để dùng class "dark:"
+export default {
+  darkMode: 'class',
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Đảm bảo đúng đường dẫn
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}", // Dòng này sẽ quét tất cả các file trong thư mục src
   ],
   theme: {
     extend: {},

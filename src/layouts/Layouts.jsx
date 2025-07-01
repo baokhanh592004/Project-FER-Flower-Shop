@@ -1,20 +1,18 @@
-// src/layouts/Layouts.js
-// PHIÊN BẢN ĐÚNG: KHÔNG DÙNG useContext ở đây.
-
+// src/layouts/Layouts.jsx
 import React from 'react';
-import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import { Outlet } from 'react-router-dom';
 
 export default function Layouts() {
   return (
-    // Nó chỉ định nghĩa khung sườn và đặt các class cho theme.
-    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300 flex flex-col">
+    // Đặt màu nền và màu chữ mặc định cho toàn bộ trang
+    // bg-gray-100 (hoặc bg-white) -> bg-gray-900
+    // Thêm transition-colors để hiệu ứng chuyển màu mượt mà
+    <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
       <Header />
-
-
-      <main className="container mx-auto p-4 flex-grow">
-        <Outlet />
+      <main className="flex-grow container mx-auto p-4 md:p-6">
+        <Outlet /> {/* Các trang của bạn sẽ được render ở đây */}
       </main>
       <Footer />
     </div>

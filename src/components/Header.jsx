@@ -1,80 +1,99 @@
-// src/components/Header.js
-// PHIÊN BẢN HOÀN CHỈNH
-
-import React, { useContext } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import React, { useState, useContext } from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaEnvelope, FaPhone } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { ThemeContext } from '../context/ThemeContext';
-// Sửa lại đường dẫn import sau khi di chuyển file ThemeToggle.jsx
-import ThemeToggle from '../context/ThemeToggle'; // Đảm bảo đường dẫn đúng
+import ThemeToggle from '../context/ThemeToggle';
 
 export default function Header() {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  // Dùng state để quản lý việc mở/đóng menu trên mobile
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   
+  // Dùng context để lấy theme, logic không thay đổi
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
+  // Hàm này giúp tự động đóng menu khi người dùng bấm vào một link trên mobile
+  const closeMobileMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header>
+    <header className="sticky top-0 z-50">
 
       {/* ===== Thanh trên cùng (Thông tin liên hệ) ===== */}
-      <div className="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 py-1 text-sm border-b border-gray-200 dark:border-gray-700">
-        <Container className="d-flex justify-content-between align-items-center">
-          <div className="d-flex align-items-center gap-3">
-            <FaPhone className="me-1 text-secondary" />
-            <span>(+84) 888-0228</span>
-            <span className="mx-2 text-muted">|</span>
-            <FaEnvelope className="me-1 text-secondary" />
-            <span>contact@flowergarden.vn</span>
+      <div className="bg-gray-100 dark:bg-gray-900 text-sm text-gray-700 dark:text-gray-300 transition-colors">
+        <div className="container mx-auto px-4 py-1 flex justify-between items-center">
+          {/* Ẩn trên màn hình nhỏ (mobile) */}
+          <div className="hidden md:flex items-center gap-4">
+            <div className="flex items-center gap-2">
+              <FaPhone className="text-gray-500" />
+              <span>(+84) 888-0228</span>
+            </div>
+            <div className="text-gray-300 dark:text-gray-600">|</div>
+            <div className="flex items-center gap-2">
+              <FaEnvelope className="text-gray-500" />
+              <span>contact@flowergarden.vn</span>
+            </div>
           </div>
-          <div  className="flex">
-            <a href="#" className="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400 me-3 fs-5" aria-label="Facebook">
-              <FaFacebookF />
-            </a>
-            <a href="#" className="text-gray-500 hover:text-sky-500 dark:hover:text-sky-400 me-3 fs-5" aria-label="Twitter">
-              <FaTwitter />
-            </a>
-            <a href="#" className="text-gray-500 hover:text-pink-500 dark:hover:text-pink-400 fs-5" aria-label="Instagram">
-              <FaInstagram />
-            </a>
+          <div className="flex items-center gap-3 w-full md:w-auto justify-center">
+            <a href="#" className="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400" aria-label="Facebook"><FaFacebookF /></a>
+            <a href="#" className="text-gray-500 hover:text-sky-500 dark:hover:text-sky-400" aria-label="Twitter"><FaTwitter /></a>
+            <a href="#" className="text-gray-500 hover:text-pink-500 dark:hover:text-pink-400" aria-label="Instagram"><FaInstagram /></a>
           </div>
-        </Container>
+        </div>
       </div>
 
       {/* ===== Thanh điều hướng chính ===== */}
-      <Navbar expand="lg" className="shadow-sm py-3 bg-pink-50 dark:bg-gray-700">
-        <Container>
-          <Navbar.Brand as={Link} to="/" className="d-flex align-items-center fw-semibold fs-4">
+      <nav className="relative bg-pink-50 dark:bg-gray-800 shadow-md transition-colors">
+        <div className="container mx-auto px-4 flex justify-between items-center h-20">
+          {/* Logo */}
+          <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3">
             <img
               src="https://cdn-icons-png.flaticon.com/512/765/765619.png"
               alt="logo"
               width="60"
-              className="me-3 rounded-circle border border-danger"
-              />
-            <span className="font-['cursive'] text-pink-600 dark:text-pink-400">
+              className="rounded-full border-2 border-pink-200 dark:border-pink-500"
+            />
+            <span className="text-2xl font-['cursive'] font-semibold text-pink-600 dark:text-pink-400">
               Flower Garden
             </span>
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="main-navbar-nav" />
-          <Navbar.Collapse id="main-navbar-nav">
-            <Nav className="ms-auto fw-medium d-flex align-items-center" style={{ gap: "1.5rem" }}>
-              <Nav.Link as={Link} to="/" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300">
-                Trang chủ
-              </Nav.Link>
-              <Nav.Link as={Link} to="/about" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300">
-                Giới thiệu
-              </Nav.Link>
-              <Nav.Link href="/products" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300">
-                Sản phẩm
-              </Nav.Link>
-              <Nav.Link href="/login" className="text-white fw-bold px-3 rounded-pill bg-pink-500 hover:bg-pink-600 transition-colors">
-                Đăng nhập
-              </Nav.Link>
-              
-              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          </Link>
 
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+          {/* Nav links cho màn hình lớn (Desktop) */}
+          <div className="hidden lg:flex items-center gap-6 font-medium">
+            <Link to="/" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Trang chủ</Link>
+            <Link to="/about" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Giới thiệu</Link>
+            <Link to="/products" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Sản phẩm</Link>
+            <Link to="/login" className="text-white font-bold px-4 py-2 rounded-full bg-pink-500 hover:bg-pink-600 transition-colors">Đăng nhập</Link>
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+          </div>
+
+          {/* Nút Hamburger cho màn hình nhỏ (Mobile) */}
+          <div className="lg:hidden">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-purple-700 dark:text-purple-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500"
+              aria-label="Mở menu"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" /></svg>
+            </button>
+          </div>
+        </div>
+
+        {/* Menu mobile (hiện ra khi bấm nút hamburger) */}
+        {isMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 w-full bg-pink-50 dark:bg-gray-800 shadow-lg z-20">
+            <div className="px-4 pt-2 pb-4 flex flex-col items-center gap-4">
+              <Link to="/" onClick={closeMobileMenu} className="text-purple-700 dark:text-purple-300 w-full text-center py-2 rounded hover:bg-pink-100 dark:hover:bg-gray-700">Trang chủ</Link>
+              <Link to="/about" onClick={closeMobileMenu} className="text-purple-700 dark:text-purple-300 w-full text-center py-2 rounded hover:bg-pink-100 dark:hover:bg-gray-700">Giới thiệu</Link>
+              <Link to="/products" onClick={closeMobileMenu} className="text-purple-700 dark:text-purple-300 w-full text-center py-2 rounded hover:bg-pink-100 dark:hover:bg-gray-700">Sản phẩm</Link>
+              <Link to="/login" onClick={closeMobileMenu} className="text-white font-bold w-full text-center py-2 rounded-full bg-pink-500 hover:bg-pink-600">Đăng nhập</Link>
+              <div className="mt-2">
+                <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+              </div>
+            </div>
+          </div>
+        )}
+      </nav>
     </header>
   );
 }
