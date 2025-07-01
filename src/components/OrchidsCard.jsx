@@ -1,6 +1,7 @@
 // src/components/OrchidsCard.jsx
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function OrchidsCard({ orchid, onDetail }) {
   return (
@@ -44,7 +45,8 @@ export default function OrchidsCard({ orchid, onDetail }) {
 
         {/* BUTTONS */}
         <div className="flex justify-between">
-          <button
+          {/* Nút Details: Dùng để mở OrchidModal nhưng do sài đề nên comment lại */}
+          {/* <button
             onClick={onDetail}
             // Nút Details: Nền tím nhạt, chữ tím đậm -> đồng bộ với theme
             className="px-4 py-2 text-sm font-medium rounded-md transition-colors
@@ -52,7 +54,15 @@ export default function OrchidsCard({ orchid, onDetail }) {
                        dark:bg-purple-800 dark:text-purple-200 dark:hover:bg-purple-700"
           >
             Details
-          </button>
+          </button> */}
+
+          {/* Nút Details : Giờ được fix lại để chuyển tới trang Orchids Detail thì nó sẽ hiện cái trang thông tin của orchids */}
+          <Link
+            to={`/orchids/${orchid.id}`}
+            className="rounded-md bg-purple-100 px-4 py-2 text-sm font-medium text-purple-700 transition-colors hover:bg-purple-200 dark:bg-purple-800 dark:text-purple-200 dark:hover:bg-purple-700"
+          >
+            Details
+          </Link>
           <button 
             // Nút Like: Dùng màu hồng làm điểm nhấn chính, giống nút Đăng nhập
             className="px-4 py-2 text-sm font-medium text-white rounded-md transition-colors

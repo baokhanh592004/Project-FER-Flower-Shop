@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Layouts from '../layouts/Layouts';
 import OrchidPage from '../pages/OrchidPage'; // Trang chủ của chúng ta
 import About from '../pages/About';
+import OrchidDetail from '../pages/OrchidDetail';
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,8 @@ export default function AppRoutes() {
         
         {/* Khi người dùng vào "/about", hiển thị About */}
         <Route path="/about" element={<About />} />
+
+        <Route path="orchids/:id" element={<OrchidDetail/>} /> 
       </Route>
     </Routes>
   );

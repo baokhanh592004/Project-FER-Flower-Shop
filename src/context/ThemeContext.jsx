@@ -1,5 +1,5 @@
 // src/context/ThemeContext.jsx
-
+// sử dụng cont
 import React, { createContext, useState, useEffect, useContext } from 'react'; // Nhớ thêm useContext
 
 export const ThemeContext = createContext();

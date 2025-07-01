@@ -12,7 +12,7 @@ export default function About() {
       <img
         src="https://i.imgur.com/oCkEbrA.png" // ảnh meme ví dụ
         alt="funny flower meme"
-        style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px', marginTop: '1rem' }}
+        style={{ maxWidth: '100%', height: 'auto', borderRadius: '12px', marginTop: '1rem', placeSelf: 'center' }}
       />
       <p style={{ fontStyle: 'italic', marginTop: '1rem' }}>
         "Hoa thì chưa thấy, chứ bug thì nở đầy code..." 💻🌹
