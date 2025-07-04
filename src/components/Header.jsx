@@ -62,7 +62,9 @@ export default function Header() {
           <div className="hidden lg:flex items-center gap-6 font-medium">
             <Link to="/" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Trang chủ</Link>
             <Link to="/about" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Giới thiệu</Link>
-            <Link to="/products" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Sản phẩm</Link>
+            <Link to="/specials" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Specials</Link>
+            <Link to="/contacts" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Contacts</Link>
+            <Link to="/naturals" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Naturals</Link>
             <Link to="/login" className="text-white font-bold px-4 py-2 rounded-full bg-pink-500 hover:bg-pink-600 transition-colors">Đăng nhập</Link>
             <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
           </div>
@@ -85,7 +87,9 @@ export default function Header() {
             <div className="px-4 pt-2 pb-4 flex flex-col items-center gap-4">
               <Link to="/" onClick={closeMobileMenu} className="text-purple-700 dark:text-purple-300 w-full text-center py-2 rounded hover:bg-pink-100 dark:hover:bg-gray-700">Trang chủ</Link>
               <Link to="/about" onClick={closeMobileMenu} className="text-purple-700 dark:text-purple-300 w-full text-center py-2 rounded hover:bg-pink-100 dark:hover:bg-gray-700">Giới thiệu</Link>
-              <Link to="/products" onClick={closeMobileMenu} className="text-purple-700 dark:text-purple-300 w-full text-center py-2 rounded hover:bg-pink-100 dark:hover:bg-gray-700">Sản phẩm</Link>
+              <Link to="/specials" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Specials</Link>
+              <Link to="/naturals" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Naturals</Link>
+              <Link to="/contacts" className="text-purple-700 dark:text-purple-300 hover:text-pink-500 dark:hover:text-pink-300 transition-colors">Contacts</Link>
               <Link to="/login" onClick={closeMobileMenu} className="text-white font-bold w-full text-center py-2 rounded-full bg-pink-500 hover:bg-pink-600">Đăng nhập</Link>
               <div className="mt-2">
                 <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
